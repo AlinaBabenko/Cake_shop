@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 public class Client {
 
     @Id
-    @Column(name="client_id")
+    @Column(name="client_id_PK")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int clientId;
 
@@ -34,6 +34,8 @@ public class Client {
     @NotNull
     @Column(name="tel_number", nullable = false)
     private String telephone;
+
+
 
     public int getClientId() {
         return clientId;

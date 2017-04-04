@@ -2,6 +2,7 @@ package com.websystique.springmvc.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by Alina on 03.04.2017.
@@ -10,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "cake_info")
 public class CakeInfo {
     @Id
-    @Column(name="cake_id")
+    @Column(name="cake_id_PK")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int clientId;
 
@@ -25,6 +26,10 @@ public class CakeInfo {
     @NotNull
     @Column(name="description", nullable = false)
     private String description;
+
+    @OneToMany(targetEntity = Image.class, mappedBy = "cake",
+            cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    private List<Image> images;
 
     public int getClientId() {
         return clientId;
@@ -56,5 +61,13 @@ public class CakeInfo {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }
