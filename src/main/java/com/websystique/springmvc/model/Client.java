@@ -10,10 +10,12 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name="Client_info")
 public class Client {
+
     @Id
     @Column(name="client_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int clientId;
+
 
     @NotNull
     @Size(min=2, max=30)
