@@ -3,6 +3,7 @@ package com.websystique.springmvc.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Alina on 03.04.2017.
@@ -11,48 +12,34 @@ import java.util.List;
 @Table(name = "cake_info")
 public class CakeInfo {
     @Id
-    @Column(name="cake_id_PK")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int clientId;
-
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
     @NotNull
-    @Column(name="cake_name", nullable = false)
-    private String cakeName;
-
+    @Column(name = "cake_name", nullable = false)
+    private String nameCake;
     @NotNull
-    @Column(name="min_weight", nullable = false)
-    private double weight;
-
-    @NotNull
-    @Column(name="description", nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
+    @NotNull
+    @Column(name = "min_weight", nullable = false)
+    private double minWeight;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cakeInfo")
+    private Set<Image> images;
 
-    @OneToMany(targetEntity = Image.class, mappedBy = "cake",
-            cascade = CascadeType.ALL, fetch=FetchType.LAZY)
-    private List<Image> images;
-
-    public int getClientId() {
-        return clientId;
+    public int getId() {
+        return id;
     }
 
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getCakeName() {
-        return cakeName;
+    public String getNameCake() {
+        return nameCake;
     }
 
-    public void setCakeName(String cakeName) {
-        this.cakeName = cakeName;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setNameCake(String nameCake) {
+        this.nameCake = nameCake;
     }
 
     public String getDescription() {
@@ -63,11 +50,30 @@ public class CakeInfo {
         this.description = description;
     }
 
-    public List<Image> getImages() {
+    public double getMinWeight() {
+        return minWeight;
+    }
+
+    public void setMinWeight(double minWeight) {
+        this.minWeight = minWeight;
+    }
+
+    public Set<Image> getImages() {
         return images;
     }
 
-    public void setImages(List<Image> images) {
+    public void setImages(Set<Image> images) {
         this.images = images;
+    }
+
+    @Override
+    public String toString() {
+        return "CakeInfo{" +
+                "id=" + id +
+                ", nameCake='" + nameCake + '\'' +
+                ", description='" + description + '\'' +
+                ", minWeight=" + minWeight +
+                ", images=" + images +
+                '}';
     }
 }

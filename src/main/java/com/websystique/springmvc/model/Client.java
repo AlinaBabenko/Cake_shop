@@ -10,39 +10,31 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name="Client_info")
 public class Client {
-
     @Id
-    @Column(name="client_id_PK")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int clientId;
-
-
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
     @NotNull
-    @Size(min=2, max=30)
     @Column(name = "first_name", nullable = false)
     private String firstName;
-
     @NotNull
-    @Size(min=2, max=30)
     @Column(name = "last_name", nullable = false)
     private String lastName;
-
     @NotNull
-    @Column(name="email", nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
-
     @NotNull
-    @Column(name="tel_number", nullable = false)
-    private String telephone;
+    @Column(name="phone", nullable = false)
+    private String phone;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
 
-
-
-    public int getClientId() {
-        return clientId;
+    public int getId() {
+        return id;
     }
 
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -69,11 +61,33 @@ public class Client {
         this.email = email;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", order=" + order +
+                '}';
     }
 }
+
+
