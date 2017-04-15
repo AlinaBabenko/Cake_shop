@@ -2,7 +2,7 @@ package com.websystique.springmvc.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.util.Set;
 
 /**
  * Created by Alina on 03.04.2017.
@@ -25,9 +25,8 @@ public class Client {
     @NotNull
     @Column(name="phone", nullable = false)
     private String phone;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+    private Set<OrderCakes> orderCakes;
 
     public int getId() {
         return id;
@@ -69,12 +68,12 @@ public class Client {
         this.phone = phone;
     }
 
-    public Order getOrder() {
-        return order;
+    public Set<OrderCakes> getOrderCakes() {
+        return orderCakes;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderCakes(Set<OrderCakes> orderCakes) {
+        this.orderCakes = orderCakes;
     }
 
     @Override
@@ -85,7 +84,7 @@ public class Client {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", order=" + order +
+                ", orderCakes=" + orderCakes +
                 '}';
     }
 }

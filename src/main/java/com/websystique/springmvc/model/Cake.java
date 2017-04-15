@@ -1,7 +1,6 @@
 package com.websystique.springmvc.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 /**
  * Created by Alina on 04.04.2017.
@@ -23,7 +22,7 @@ public class Cake {
     private double priceCake;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    private Order order;
+    private OrderCakes orderCakes;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cakeInfo_id")
     private CakeInfo cakeInfo;
@@ -68,12 +67,12 @@ public class Cake {
         this.priceCake = priceCake;
     }
 
-    public Order getOrder() {
-        return order;
+    public OrderCakes getOrderCakes() {
+        return orderCakes;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderCakes(OrderCakes orderCakes) {
+        this.orderCakes = orderCakes;
     }
 
     public CakeInfo getCakeInfo() {
@@ -92,7 +91,7 @@ public class Cake {
                 ", quantity=" + quantity +
                 ", priceForOneKilo=" + priceForOneKilo +
                 ", priceCake=" + priceCake +
-                ", order=" + order +
+                ", orderCakes=" + orderCakes +
                 ", cakeInfo=" + cakeInfo +
                 '}';
     }

@@ -15,7 +15,7 @@ public class Image {
     @Column(name = "content")
     private String content;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cake_info_id")
+    @JoinColumn(name = "cakeInfo_id")
     private CakeInfo cakeInfo;
 
     public int getId() {

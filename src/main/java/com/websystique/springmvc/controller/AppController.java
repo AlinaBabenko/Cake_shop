@@ -22,8 +22,8 @@ import com.websystique.springmvc.model.Employee;
 @RequestMapping("/")
 public class AppController {
 
-    @Autowired
-    EmployeeService service;
+  //  @Autowired
+ //   EmployeeService service;
 
     @Autowired
     MessageSource messageSource;
@@ -34,8 +34,8 @@ public class AppController {
     @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
     public String listEmployees(ModelMap model) {
 
-        List<Employee> employees = service.findAllEmployees();
-        model.addAttribute("employees", employees);
+     //   List<Employee> employees = service.findAllEmployees();
+     //   model.addAttribute("employees", employees);
         return "allemployees";
     }
 
@@ -70,13 +70,13 @@ public class AppController {
          * framework as well while still using internationalized messages.
          *
          */
-        if(!service.isEmployeeSsnUnique(employee.getId(), employee.getSsn())){
-            FieldError ssnError =new FieldError("employee","ssn",messageSource.getMessage("non.unique.ssn", new String[]{employee.getSsn()}, Locale.getDefault()));
-            result.addError(ssnError);
-            return "registration";
-        }
+       // if(!service.isEmployeeSsnUnique(employee.getId(), employee.getSsn())){
+         //   FieldError ssnError =new FieldError("employee","ssn",messageSource.getMessage("non.unique.ssn", new String[]{employee.getSsn()}, Locale.getDefault()));
+         //   result.addError(ssnError);
+          //  return "registration";
+      //  }
 
-        service.saveEmployee(employee);
+     //   service.saveEmployee(employee);
 
         model.addAttribute("success", "Employee " + employee.getName() + " registered successfully");
         return "success";
@@ -88,8 +88,8 @@ public class AppController {
      */
     @RequestMapping(value = { "/edit-{ssn}-employee" }, method = RequestMethod.GET)
     public String editEmployee(@PathVariable String ssn, ModelMap model) {
-        Employee employee = service.findEmployeeBySsn(ssn);
-        model.addAttribute("employee", employee);
+      //  Employee employee = service.findEmployeeBySsn(ssn);
+      //  model.addAttribute("employee", employee);
         model.addAttribute("edit", true);
         return "registration";
     }
@@ -106,13 +106,13 @@ public class AppController {
             return "registration";
         }
 
-        if(!service.isEmployeeSsnUnique(employee.getId(), employee.getSsn())){
+      /*  if(!service.isEmployeeSsnUnique(employee.getId(), employee.getSsn())){
             FieldError ssnError =new FieldError("employee","ssn",messageSource.getMessage("non.unique.ssn", new String[]{employee.getSsn()}, Locale.getDefault()));
             result.addError(ssnError);
             return "registration";
         }
 
-        service.updateEmployee(employee);
+        service.updateEmployee(employee);*/
 
         model.addAttribute("success", "Employee " + employee.getName()  + " updated successfully");
         return "success";
@@ -124,7 +124,7 @@ public class AppController {
      */
     @RequestMapping(value = { "/delete-{ssn}-employee" }, method = RequestMethod.GET)
     public String deleteEmployee(@PathVariable String ssn) {
-        service.deleteEmployeeBySsn(ssn);
+      //  service.deleteEmployeeBySsn(ssn);
         return "redirect:/list";
     }
 

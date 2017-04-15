@@ -10,8 +10,8 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name="Order")
-public class Order {
+@Table(name="OrderCakes")
+public class OrderCakes {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
@@ -19,10 +19,12 @@ public class Order {
     private double amount;
     @Column(name="date_order")
     private Date dateOrder;
-    @OneToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
     private Client client;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "orderCakes")
     private Set<Cake> cakes;
 
     public int getId() {
@@ -67,7 +69,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "OrderCakes{" +
                 "id=" + id +
                 ", amount=" + amount +
                 ", dateOrder=" + dateOrder +
