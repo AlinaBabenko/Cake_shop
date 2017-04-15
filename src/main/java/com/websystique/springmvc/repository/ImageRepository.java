@@ -1,6 +1,5 @@
 package com.websystique.springmvc.repository;
 
-import com.websystique.springmvc.model.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

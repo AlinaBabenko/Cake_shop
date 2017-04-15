@@ -1,7 +1,7 @@
 package com.websystique.springmvc.service;
 
 import com.websystique.springmvc.model.Cake;
-import com.websystique.springmvc.model.Client;
+
 
 import java.util.List;
 
