@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="org.thymeleaf:thymeleaf:Release1" type="repository">
+  <library name="org.thymeleaf:thymeleaf:Release2" type="repository">
     <properties maven-id="org.thymeleaf:thymeleaf:RELEASE" />
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/org/thymeleaf/thymeleaf/3.0.5.RELEASE/thymeleaf-3.0.5.RELEASE.jar!/" />

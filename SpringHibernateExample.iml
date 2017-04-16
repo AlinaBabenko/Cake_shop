@@ -101,5 +101,8 @@
     <orderEntry type="library" name="org.thymeleaf.extras:thymeleaf-extras-springsecurity4:Release" level="project" />
     <orderEntry type="library" name="org.thymeleaf:thymeleaf-spring4:Release" level="project" />
     <orderEntry type="library" name="spring-data-jpa-1.0.0.RELEASE" level="application" />
+    <orderEntry type="library" name="org.thymeleaf:thymeleaf:Release2" level="project" />
+    <orderEntry type="library" name="org.thymeleaf.extras:thymeleaf-extras-springsecurity4:Release1" level="project" />
+    <orderEntry type="library" name="jar_files" level="application" />
   </component>
 </module>

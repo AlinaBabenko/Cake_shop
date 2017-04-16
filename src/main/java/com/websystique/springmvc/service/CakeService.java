@@ -1,6 +1,7 @@
 package com.websystique.springmvc.service;
 
 import com.websystique.springmvc.model.Cake;
+import org.springframework.stereotype.Component;
 
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 /**
  * Created by Alina on 15.04.2017.
  */
+
 public interface CakeService {
     Cake findById(int id);
     List<Cake> findAllCakes();

@@ -1,13 +1,12 @@
 package com.websystique.springmvc.service.impl;
 
-import com.websystique.springmvc.model.Cake;
+
 import com.websystique.springmvc.model.Client;
 import com.websystique.springmvc.repository.ClientRepository;
-import com.websystique.springmvc.service.CakeService;
 import com.websystique.springmvc.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
@@ -17,17 +16,18 @@ import java.util.List;
 @Service
 public class ClientServiceImpl implements ClientService {
     @Autowired
+
     private ClientRepository clientRepository;
 
 
     @Override
     public Client findById(int id) {
-        return null;
+        return clientRepository.findById(id);
     }
 
     @Override
     public List<Client> findAllClients() {
-        return null;
+        return clientRepository.findAll();
     }
 
     @Override
@@ -37,11 +37,20 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void updateClient(Client client) {
+        Client savedClient = clientRepository.findById(client.getId());
+
+        if(savedClient!=null){
+            savedClient.setFirstName(client.getFirstName());
+            savedClient.setLastName(client.getLastName());
+            savedClient.setEmail(client.getEmail());
+            savedClient.setPhone(client.getPhone());
+            savedClient.setOrderCakes(client.getOrderCakes());
+        }
 
     }
 
     @Override
     public void deleteClient(int id) {
-       
+        clientRepository.delete(id);
     }
 }

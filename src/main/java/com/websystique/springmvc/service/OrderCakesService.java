@@ -12,9 +12,9 @@ public interface OrderCakesService  {
     OrderCakes findById(int id);
     List<OrderCakes> findAllOrderCakes();
 
-    void saveOrderCakes(Client client);
+    void saveOrderCakes(OrderCakes orderCakes);
 
-    void updateOrderCakes(Client client);
+    void updateOrderCakes(OrderCakes orderCakes);
 
     void deleteOrderCakes(int id);
 
